@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, ranked by what that token would be worth.</p>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="model-strip" id="model"></section>
+
+<section class="controls" aria-label="Board controls">
+  <label class="control grow">Search
+    <input id="q" type="search" placeholder="Protocol name or slug" autocomplete="off">
+  </label>
+  <label class="control">Category
+    <select id="category"></select>
+  </label>
+  <label class="control">Chain
+    <select id="chain"></select>
+  </label>
+  <label class="control">Sort by
+    <select id="sort">
+      <option value="rank">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="change">7d change</option>
+      <option value="age">Age (days tracked)</option>
+      <option value="multiple">Category multiple</option>
+    </select>
+  </label>
+  <label class="control check">
+    <input id="watchlist-only" type="checkbox"> Watchlist only
+  </label>
+  <p class="count" id="count"></p>
+</section>
+
+<main>
+  <table class="board" id="board">
+    <thead>
+      <tr>
+        <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Implied value</th>
+        <th class="num">Value / TVL</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="empty" id="empty" hidden>No protocol matches those filters. Loosen one and the radar picks it up again.</p>
+</main>
+
+<aside class="drawer" id="drawer" hidden aria-label="Protocol detail"></aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<footer>
+  <p>Implied value is this board's own model claim, computed only from the sealed snapshot named above; it is not a prediction that any protocol will issue a token, or when. Protocols shown record no token in that snapshot — a record can lag a launch, so verify before you act. Farm plans are starting points, not financial advice.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
